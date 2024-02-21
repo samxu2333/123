@@ -87,11 +87,11 @@ namespace RaceTo21
         //show one player's card information, PlayerStatus?
         public void ShowHand(Player player)
         {
-            if (player.cards.Count > 0)
+            if (player.cardInfo().Count > 0)
             {
                 Console.Write(player.name + " has: ");
                 bool first = true;
-                foreach (Card card in player.cards)
+                foreach (Card card in player.cardInfo())
                 {
                     if(first)
                     {
