@@ -83,11 +83,14 @@ namespace RaceTo21
                         else if (player.score == 21)
                         {
                             player.status = PlayerStatus.win;
+                            Player winnerplayer = DoFinalScoring();
+                            cardTable.AnnounceWinner(winnerplayer);
                         }
                     }
                     else
                     {
                         player.status = PlayerStatus.stay;
+                        cardTable.ShowHand(player);
                     }
                 }
                 cardTable.ShowHand(player);
