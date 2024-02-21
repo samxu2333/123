@@ -10,7 +10,7 @@ namespace RaceTo21
 	public class Player
 	{
 		public string name;
-		public List<Card> cards = new List<Card>();
+		private List<Card> cards = new List<Card>();
 		public PlayerStatus status = PlayerStatus.active; //?
 		public int score;
 
@@ -19,6 +19,10 @@ namespace RaceTo21
 			name = n;
         }
 
+		public List<Card> cardInfo()
+        {
+			return cards;
+        } 
 		/// <summary>
 		/// Introduces player by name. Called by CardTable object.
 		/// </summary>

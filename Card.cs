@@ -14,10 +14,7 @@ namespace RaceTo21
     {
         public string ID;
         public string name;
-        public string response()
-        {
-            return Console.ReadLine();
-        }
+        
         // Option 1: just store the name for each card alongside the ID
 
         // Option 2: figure out what the name should be based on the ID

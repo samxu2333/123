@@ -5,7 +5,7 @@ namespace RaceTo21
 {
     public class CardTable
     {
-        Card card = new Card();
+        //Card card = new Card();
 
         public CardTable()
         {
@@ -32,7 +32,7 @@ namespace RaceTo21
         public int GetNumberOfPlayers()
         {
             Console.Write("How many players? ");
-            string response = card.response();
+            string response = Console.ReadLine();
             int numberOfPlayers;
             while (int.TryParse(response, out numberOfPlayers) == false
                 || numberOfPlayers < 2 || numberOfPlayers > 8)
@@ -52,7 +52,7 @@ namespace RaceTo21
         public string GetPlayerName(int playerNum)
         {
             Console.Write("What is the name of player# " + playerNum + "? ");
-            string response = card.response();
+            string response = Console.ReadLine();
             while (response.Length < 1)
             {
                 Console.WriteLine("Invalid name.");
@@ -68,7 +68,7 @@ namespace RaceTo21
             while (true)
             {
                 Console.Write(player.name + ", do you want a card? (Y/N)");
-                string response = card.response();
+                string response = Console.ReadLine();
                 if (response.ToUpper().StartsWith("Y"))
                 {
                     return true;
@@ -87,12 +87,21 @@ namespace RaceTo21
         //show one player's card information, PlayerStatus?
         public void ShowHand(Player player)
         {
-            if (player.cards.Count > 0)
+            if (player.cardInfo().Count > 0)
             {
                 Console.Write(player.name + " has: ");
-                foreach (Card card in player.cards)
+                bool first = true;
+                foreach (Card card in player.cardInfo())
                 {
-                    Console.Write(card.name + ", ");
+                    if(first)
+                    {
+                        first = false;
+                    }
+                    else
+                    {
+                        Console.Write(", ");
+                    }
+                    Console.Write(card.name);
                 }
                 Console.Write("=" + player.score + "/21 ");
                 if (player.status != PlayerStatus.active)
@@ -123,8 +132,8 @@ namespace RaceTo21
             {
                 Console.WriteLine("Everyone busted!");
             }
-            //Console.Write("Press <Enter> to exit... ");
-            //while (Console.ReadKey().Key != ConsoleKey.Enter) { }
+            Console.Write("Press <Enter> to exit... ");
+            while (Console.ReadKey().Key != ConsoleKey.Enter) { }
         }
     }
 }
